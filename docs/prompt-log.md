@@ -1,4 +1,0 @@
-- *Prompt 1 (Weak):* "Make a task tracker code."
-  - Rewritten/Strong Prompt: "Implement a FastAPI backend for a Task Tracker with endpoints for CRUD operations, supporting due dates and tags." (Status: *Accepted & Used*)
-- *Prompt 2:* "Add query parameter logic to filter overdue uncompleted tasks in FastAPI." (Status: *Accepted*)
-- *Prompt 3:* "Create HTML frontend template that fetches tasks and displays tags and due dates." (Status: *Accepted*)
