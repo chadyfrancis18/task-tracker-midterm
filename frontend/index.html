@@ -2,19 +2,46 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Task Tracker UI</title>
+    <title>Task Tracker Dashboard</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 40px; background: #f4f4f9; }
+        h1 { color: #333; }
+        .task-list { margin-top: 20px; }
+        .tag { background: #e0e0e0; padding: 2px 6px; border-radius: 4px; font-size: 12px; margin-left: 5px; }
+        .overdue { color: red; font-weight: bold; }
+    </style>
 </head>
 <body>
-    <h1>Task Tracker Frontend</h1>
-    <p>Connected successfully to the FastAPI backend!</p>
-    <div id="tasks-container"></div>
-
+    <h1>Task Tracker Dashboard</h1>
+    <div>
+        <label><input type="checkbox" id="overdueFilter" onchange="fetchTasks()"> Show Overdue Only</label>
+    </div>
+    <div class="task-list">
+        <h3>Tasks:</h3>
+        <ul id="tasks"></ul>
+    </div>
     <script>
-        fetch('http://127.0.0.1:8000/tasks')
-            .then(response => response.json())
-            .then(data => {
-                console.log(data);
-            });
+        function fetchTasks() {
+            let overdue = document.getElementById('overdueFilter').checked;
+            let url = 'http://127.0.0.1:8000/tasks';
+            if (overdue) url += '?overdue=true';
+
+            fetch(url)
+                .then(res => res.json())
+                .then(data => {
+                    const list = document.getElementById('tasks');
+                    list.innerHTML = '';
+                    data.forEach(task => {
+                        let li = document.createElement('li');
+                        let tagsHtml = task.tags.map(tag => <span class="tag">${tag}</span>).join('');
+                        let dueDateHtml = task.due_date ? ` - Due: ${task.due_date}` : '';
+                        
+                        li.innerHTML = ${task.title} ${dueDateHtml} ${tagsHtml} - ${task.completed ? 'Completed' : 'Pending'};
+                        list.appendChild(li);
+                    });
+                }).catch(err => console.log('Error fetching tasks:', err));
+        }
+        fetchTasks();
     </script>
 </body>
 </html>
