@@ -1,4 +1,9 @@
-# Verification Steps
-1. Run backend using: uvicorn backend.main:app --reload
-2. Run tests using: pytest
-3. Open frontend index.html in the browser.
+# Verification and Test Results
+
+## 1. Overview
+This document provides the verification steps, manual checks, and execution results for the Task Tracker application backend.
+
+## 2. Setup and Execution
+To run the FastAPI backend locally, the application was started using Uvicorn:
+```bash
+uvicorn backend.main:app --reload
