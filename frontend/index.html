@@ -1,1 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Task Tracker UI</title>
+</head>
+<body>
+    <h1>Task Tracker Frontend</h1>
+    <p>Connected successfully to the FastAPI backend!</p>
+    <div id="tasks-container"></div>
 
+    <script>
+        fetch('http://127.0.0.1:8000/tasks')
+            .then(response => response.json())
+            .then(data => {
+                console.log(data);
+            });
+    </script>
+</body>
+</html>
