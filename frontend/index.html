@@ -37,9 +37,9 @@ async function loadTasks() {
     const searchQuery = document.getElementById('search-input').value;
     const overdueOnly = document.getElementById('filter-overdue').checked;
     
-    let url = /tasks?q=${encodeURIComponent(searchQuery)};
+    let url = `/tasks?q=${encodeURIComponent(searchQuery)}`;
     if (overdueOnly) {
-        url += &overdue=true;
+        url += `&overdue=true`;
     }
 
     const res = await fetch(url);
@@ -51,7 +51,7 @@ async function loadTasks() {
     tasks.forEach(task => {
         const card = document.createElement('div');
         card.className = task.overdue ? 'task-card overdue' : 'task-card';
-        const tagsHtml = (task.tags || []).map(tag => <span class="tag-chip">#${tag}</span>).join(' ');
+       const tagsHtml = (task.tags || []).map(tag => `<span class="tag-chip">#${tag}</span>`).join(' ');
         
         card.innerHTML = `
             <h4>${task.title}</h4>
