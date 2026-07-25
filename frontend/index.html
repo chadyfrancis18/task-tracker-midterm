@@ -2,46 +2,98 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Task Tracker Dashboard</title>
+    <title>Task Tracker</title>
     <style>
-        body { font-family: Arial, sans-serif; margin: 40px; background: #f4f4f9; }
-        h1 { color: #333; }
-        .task-list { margin-top: 20px; }
-        .tag { background: #e0e0e0; padding: 2px 6px; border-radius: 4px; font-size: 12px; margin-left: 5px; }
-        .overdue { color: red; font-weight: bold; }
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        .task-card { border: 1px solid #ccc; padding: 10px; margin-bottom: 10px; border-radius: 4px; }
+        .task-card.overdue { border-color: red; background-color: #ffe6e6; }
+        .tag-chip { background: #e1e1e1; padding: 2px 6px; border-radius: 4px; font-size: 0.85em; margin-right: 4px; }
     </style>
 </head>
 <body>
-    <h1>Task Tracker Dashboard</h1>
-    <div>
-        <label><input type="checkbox" id="overdueFilter" onchange="fetchTasks()"> Show Overdue Only</label>
-    </div>
-    <div class="task-list">
-        <h3>Tasks:</h3>
-        <ul id="tasks"></ul>
-    </div>
-    <script>
-        function fetchTasks() {
-            let overdue = document.getElementById('overdueFilter').checked;
-            let url = 'http://127.0.0.1:8000/tasks';
-            if (overdue) url += '?overdue=true';
 
-            fetch(url)
-                .then(res => res.json())
-                .then(data => {
-                    const list = document.getElementById('tasks');
-                    list.innerHTML = '';
-                    data.forEach(task => {
-                        let li = document.createElement('li');
-                        let tagsHtml = task.tags.map(tag => <span class="tag">${tag}</span>).join('');
-                        let dueDateHtml = task.due_date ? ` - Due: ${task.due_date}` : '';
-                        
-                        li.innerHTML = ${task.title} ${dueDateHtml} ${tagsHtml} - ${task.completed ? 'Completed' : 'Pending'};
-                        list.appendChild(li);
-                    });
-                }).catch(err => console.log('Error fetching tasks:', err));
-        }
-        fetchTasks();
-    </script>
+<h1>Task Tracker</h1>
+
+<div>
+    <h3>Create Task</h3>
+    <input type="text" id="task-title" placeholder="Title" required><br><br>
+    <textarea id="task-desc" placeholder="Description"></textarea><br><br>
+    <input type="date" id="task-due-date"><br><br>
+    <input type="text" id="task-tags" placeholder="Tags (comma separated)"><br><br>
+    <button onclick="saveTask()">Save Task</button>
+</div>
+
+<hr>
+
+<div>
+    <input type="text" id="search-input" placeholder="Search tasks..." onkeyup="loadTasks()">
+    <label><input type="checkbox" id="filter-overdue" onchange="loadTasks()"> Overdue only</label>
+</div>
+
+<div id="tasks-container"></div>
+
+<script>
+async function loadTasks() {
+    const searchQuery = document.getElementById('search-input').value;
+    const overdueOnly = document.getElementById('filter-overdue').checked;
+    
+    let url = /tasks?q=${encodeURIComponent(searchQuery)};
+    if (overdueOnly) {
+        url += &overdue=true;
+    }
+
+    const res = await fetch(url);
+    const tasks = await res.json();
+    
+    const container = document.getElementById('tasks-container');
+    container.innerHTML = '';
+
+    tasks.forEach(task => {
+        const card = document.createElement('div');
+        card.className = task.overdue ? 'task-card overdue' : 'task-card';
+        const tagsHtml = (task.tags || []).map(tag => <span class="tag-chip">#${tag}</span>).join(' ');
+        
+        card.innerHTML = `
+            <h4>${task.title}</h4>
+            <p>${task.description || ''}</p>
+            <p>Due Date: ${task.due_date || 'None'} ${task.overdue ? '<span style="color:red;">(Overdue)</span>' : ''}</p>
+            <div>${tagsHtml}</div>
+        `;
+        container.appendChild(card);
+    });
+}
+
+async function saveTask() {
+    const title = document.getElementById('task-title').value;
+    const description = document.getElementById('task-desc').value;
+    const dueDate = document.getElementById('task-due-date').value;
+    const tags = document.getElementById('task-tags').value;
+
+    const response = await fetch('/tasks', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+            title: title,
+            description: description,
+            due_date: dueDate || null,
+            tags: tags
+        })
+    });
+
+    if (response.ok) {
+        document.getElementById('task-title').value = '';
+        document.getElementById('task-desc').value = '';
+        document.getElementById('task-due-date').value = '';
+        document.getElementById('task-tags').value = '';
+        loadTasks();
+    } else {
+        const err = await response.json();
+        alert('Error: ' + (err.error || 'Failed to create task'));
+    }
+}
+
+loadTasks();
+</script>
+
 </body>
 </html>
