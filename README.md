@@ -18,7 +18,3 @@ Ensure you have Python (version 3.8 or higher) and pip installed on your local m
    ```bash
    git clone <repository-url>
    cd <repository-directory>
-   pip install -r requirements.txt
-   uvicorn main:app --reload
-   pytest
-   docker-compose up --build
