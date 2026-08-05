@@ -1,43 +1,36 @@
-# Final AI-Assisted Review & Evaluation Report
+## 1. AI Review Comments
+* *Comment 1:* Suggested refactoring for database dependency injection in backend/database.py. 
+  * *Classification:* Useful
+  * *Reason:* It simplified session management and made unit testing much cleaner.
+* *Comment 2:* Proposed a complex caching layer using Redis for simple get tasks.
+  * *Classification:* Noise
+  * *Reason:* Over-engineering for a small midterm/final project scope where local memory is sufficient.
+* *Comment 3:* Suggested removing authentication middleware from protected routes to speed up requests.
+  * *Classification:* Wrong
+  * *Reason:* It would completely break the security model and bypass token verification.
 
-> *Project Name:* Task Tracker Application  
-> *Course:* AI-Assisted Coding Program (AUB)  
-> *Repository Branch:* final-project  
-> *Review Scope:* Comprehensive Code Review, Architecture Validation, and AI Collaboration Summary  
+## 2. Security Findings
+* *Finding 1:* Hardcoded secret key warning in backend/config.py.
+  * *Classification:* Valid
+  * *Reason:* Environment variables must be used instead of plaintext strings to prevent credential leaks.
+* *Finding 2:* Potential SQL injection vulnerability flagged in raw query construction inside backend/models.py.
+  * *Classification:* False Positive
+  * *Reason:* SQLAlchemy ORM parameterization is already being used safely, neutralizing the risk.
+* *Finding 3:* Missing rate limiting on the login endpoint.
+  * *Classification:* Noise
+  * *Reason:* Out of scope for this specific academic project requirements.
 
----
+## 3. Manual Check Performed
+* *Self-Check:* Verified manually that unauthenticated users trying to access protected task endpoints receive a 401 Unauthorized status code by testing via Postman/curl.
 
-## 1. Executive Summary
-This document outlines the final AI-assisted code review and evaluation for the Task Tracker application. Throughout the development lifecycle, AI agents and prompt engineering techniques were systematically utilized to design database schemas, implement secure FastAPI endpoints, troubleshoot CI/CD and Git merge conflicts, and ensure code maintainability.
+## 4. Rejected or Corrected AI Suggestion
+* *Suggestion:* The AI suggested using global mutable state to cache user sessions for faster retrieval.
+* *Action Taken:* *Rejected / Corrected* because it introduces concurrency bugs and thread-safety issues in FastAPI; replaced with proper dependency injection.
 
----
+## 5. AI Usage Rules
+1. Never let AI generate authentication or cryptographic logic without a strict line-by-line manual security review.
+2. Always verify that AI-suggested package imports exist and match the project's requirements.txt.
+3. Use AI primarily for scaffolding, boilerplate generation, and debugging assistance, retaining full ownership of architectural decisions.
 
-## 2. AI-Assisted Development & Collaboration Workflow
-
-### A. Core Contributions by AI Tools
-* *Architecture & Scaffolding:* Utilized AI to design the initial FastAPI project structure, separation of concerns (routers, models, schemas, crud), and SQLAlchemy database configurations.
-* *Debugging & Error Resolution:* Resolved complex asynchronous endpoint issues, Pydantic validation errors, and Docker containerization bugs through targeted prompt iterations.
-* *Documentation & Prompt Logging:* Maintained structured logs of prompts and agent responses to track architectural decisions and feature scaling.
-
-### B. Prompt Engineering Strategy
-* *Modular Prompting:* Applied context-driven prompts mapped to specific module requirements rather than relying on unstructured queries.
-* *Iterative Refinement:* Refined code outputs through strict constraints regarding type hints, error handling, and security best practices (e.g., preventing SQL injection and securing environment variables).
-
----
-
-## 3. Critical Code Quality & Architecture Review
-
-* *Modularity:* The codebase adheres to strict separation of layers, making it modular and ready for team maintenance.
-* *Error Handling:* Standardized HTTP exception handling implemented across all CRUD operations to ensure robust API responses.
-* *Type Safety:* Comprehensive use of Python type hints and Pydantic models for request/response payloads validation.
-
----
-
-## 4. Final Review Checklist
-
-| Review Category | Status | Remarks |
-| :--- | :---: | :--- |
-| *Architecture & Design Patterns* | Passed | Clean separation of API routes, business logic, and data models. |
-| *Code Readability & Standards* | Passed | Adheres to PEP 8 style guidelines with clear inline documentation. |
-| *Security & Hardening* | Passed | Sensitive keys isolated via .env; sanitized input validation. |
-| *AI Integration Traceability* | Passed | Documented via AGENTS.md and structured AI workflow notes. |
+## 6. Ownership Statement
+I, Chady Francis, designed, implemented, and thoroughly tested the Task Tracker application code structure within this repository. I personally validated all automated tests, container configurations, and execution workflows. Every line of code and documentation included in this final submission has been meticulously reviewed and understood by me
