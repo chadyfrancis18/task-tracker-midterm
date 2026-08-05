@@ -1,11 +1,19 @@
 FROM python:3.10-slim
 
+# Create a non-root user for security compliance
+RUN useradd -m -u 1000 appuser
+
 WORKDIR /app
 
-COPY requirements.txt .
+# Install dependencies
+COPY backend/requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
 
-COPY . .
+# Copy backend code into the container
+COPY backend/ ./backend/
+
+# Switch to the non-root user
+USER appuser
 
 EXPOSE 8000
 
