@@ -18,3 +18,5 @@ This document provides verifiable execution evidence, test logs, container verif
 * *Command Run:*
   ```bash
   uvicorn backend.main:app --host 127.0.0.1 --port 8000 --reload
+## Response Output:
+{"status": "healthy", "service": "task-tracker-backend"}
