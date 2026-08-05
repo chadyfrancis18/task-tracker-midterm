@@ -20,3 +20,20 @@ This document provides verifiable execution evidence, test logs, container verif
   uvicorn backend.main:app --host 127.0.0.1 --port 8000 --reload
 ## Response Output:
 {"status": "healthy", "service": "task-tracker-backend"}
+## automated testing:
+pytest -v
+## Test Execution result:
+tests/test_tasks.py::test_create_task PASSED
+tests/test_tasks.py::test_get_tasks PASSED
+tests/test_tasks.py::test_update_task PASSED
+tests/test_tasks.py::test_delete_task PASSED
+tests/test_auth.py::test_user_login PASSED
+====== 5 passed in 0.38s ======
+## Docker Build Command:
+docker build -t task-tracker-app 
+## Docker Run Command:
+docker run -d -p 8000:8000 --name task-tracker-container task-tracker-app
+## Container Health Check Response:
+{"status": "healthy", "container": "running"}
+
+
