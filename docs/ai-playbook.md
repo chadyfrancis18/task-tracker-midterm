@@ -1,17 +1,18 @@
-# AI Playbook & Workflow Guidelines
+# AI Development Playbook
 
 ## 1. Overview
-This playbook outlines the standard procedures, prompts, and strategies used for leveraging AI tools (such as GitHub Copilot and LLMs) during the development, testing, and documentation phases of this project.
+This playbook defines the standard practices, guardrails, and iterative workflows for integrating AI assistance into the Task Tracker project development lifecycle.
 
-## 2. AI-Assisted Development Workflow
-* *Code Generation:* Utilizing AI prompts to generate initial scaffolding, boilerplate code, and functional modules.
-* *Debugging & Error Resolution:* Analyzing stack traces and error logs with AI assistance to identify and fix bugs efficiently.
-* *Refactoring:* Improving code readability, performance, and structure using automated AI suggestions.
+## 2. Prompt Engineering Standards
+* *Contextual Prompting:* Always provide clear file paths, framework versions (FastAPI, Python), and specific error logs when asking the AI for assistance.
+* *Scope Limitation:* Ask the AI to generate small, modular functions or fixes rather than entire application monoliths to maintain tight control over the codebase.
 
-## 3. Best Practices & Prompt Engineering
-* Always provide clear, contextual snippets when asking AI to review or modify code.
-* Maintain strict security by ensuring no sensitive data, keys, or credentials are included in prompts.
-* Manually review and test all AI-generated code snippets before integrating them into the main codebase.
+## 3. Review & Verification Workflow
+1. *Generation:* AI generates a code snippet, refactoring suggestion, or test case.
+2. *Manual Inspection:* Developer reviews the code line-by-line for security flaws, hardcoded credentials, or logic bugs.
+3. *Automated Testing:* Run pytest -v locally and through CI pipelines to verify functionality.
+4. *Integration:* Only merge changes into the repository branch after tests pass successfully.
 
-## 4. Maintenance
-* This playbook will be updated iteratively as the project requirements and AI toolsets evolve
+## 4. Security & Safety Guardrails
+* Never paste production API keys, database credentials, or sensitive secrets into AI prompt interfaces.
+* Treat all AI-generated authentication or authorization logic as untrusted until thoroughly vetted manually
