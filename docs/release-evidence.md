@@ -12,7 +12,7 @@ This document provides verifiable execution evidence and checks for the Task Tra
 ---
 
 ## 2. CI Pipeline & Security Checks
-* *CI Section & Run Link:* [GitHub Actions Workflow Run Link](https://github.com/chadyfrancis/task-tracker-midterm/actions)
+* *CI Section & Run Link:* [https://github.com/chadyfrancis18/task-tracker-midterm/tree/final-project]
 * *Shortcut Check:* Verified and passing.
 * *Non-root User Check:* Verified that the container runs with a non-privileged user.
 * *No-baked-secrets Check:* Verified that no sensitive credentials or API keys are baked into the image.
