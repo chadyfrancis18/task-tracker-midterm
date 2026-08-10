@@ -27,7 +27,9 @@ tasks_db: List[Task] = []
 @app.get("/")
 def read_root():
     return {"message": "Welcome to Task Tracker API with Advanced Features"}
-
+@app.get("/health")
+def health_check():
+    return {"status": "healthy", "service": "task-tracker-backend"}
 @app.get("/tasks", response_model=List[Task])
 def get_tasks(overdue: Optional[bool] = None, tag: Optional[str] = None):
     result = tasks_db
