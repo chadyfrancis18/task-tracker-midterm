@@ -19,8 +19,8 @@ class Task(BaseModel):
     title: str
     description: Optional[str] = None
     completed: bool = False
-    due_date: Optional[date] = None  # ميزة تواريخ الاستحقاق
-    tags: List[str] = Field(default_factory=list)  # ميزة التصنيفات
+    due_date: Optional[date] = None 
+    tags: List[str] = Field(default_factory=list)  
 
 tasks_db: List[Task] = []
 
@@ -67,3 +67,6 @@ def delete_task(task_id: int):
             tasks_db.pop(idx)
             return {"message": "Task deleted successfully"}
     raise HTTPException(status_code=404, detail="Task not found")
+    @app.get("/health")
+def health_check():
+    return {"status": "healthy", "service": "task-tracker-backend"}
