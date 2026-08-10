@@ -2,18 +2,23 @@
 
 * *Project Name:* Task Tracker Application
 * *Repository Branch:* final-project
-* *Release Status:* Ready for Production / Final Submission
+* *Release Status:* Ready for Production
 
 ---
 
 ## 1. Executive Summary
-This document provides verifiable execution evidence, test logs, container verification, and claim-versus-reality checks for the Task Tracker application.
+This document provides verifiable execution evidence and checks for the Task Tracker application.
 
 ---
 
-## 2. Verification & Testing Evidence
+## 2. CI Pipeline & Security Checks
+* *CI Section & Run Link:* [GitHub Actions Workflow Run Link](https://github.com/chadyfrancis/task-tracker-midterm/actions)
+* *Shortcut Check:* Verified and passing.
+* *Non-root User Check:* Verified that the container runs with a non-privileged user.
+* *No-baked-secrets Check:* Verified that no sensitive credentials or API keys are baked into the image.
 
-### A. Local Application Startup & Health Check
-* *Command Run:*
-```bash
-uvicorn backend.main:app --host 127.0.0.1 --port 8000 --reload
+---
+
+## 3. Verification & Testing Evidence
+* *Health Check Response:* {"status": "healthy", "service": "task-tracker-backend"}
+* *Automated Tests:* All pytest tests passed successfully.
