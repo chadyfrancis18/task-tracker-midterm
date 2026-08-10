@@ -26,4 +26,4 @@ jobs:
 
     - name: Run tests with pytest
       run: |
-        PYTHONPATH=backend pytest tests/
+        pytest backend/tests/
