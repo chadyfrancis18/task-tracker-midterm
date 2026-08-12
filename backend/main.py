@@ -1,5 +1,5 @@
 from typing import List, Optional
-from fastapi import FastAPI, Header, HTTPException
+from fastapi import FastAPI, HTTPException
 from pydantic import BaseModel
 
 app = FastAPI(
@@ -30,10 +30,7 @@ def get_tasks():
     return tasks_db
 
 @app.post("/tasks", response_model=Task)
-def create_task(task: Task, authorization: Optional[str] = Header(None)):
-    if not authorization or authorization != "Bearer secret-token":
-        raise HTTPException(status_code=401, detail="Unauthorized - Missing or invalid token")
-        
+def create_task(task: Task):
     for t in tasks_db:
         if t.id == task.id:
             raise HTTPException(status_code=400, detail="Task with this ID already exists")
@@ -41,13 +38,9 @@ def create_task(task: Task, authorization: Optional[str] = Header(None)):
     return task
 
 @app.delete("/tasks/{task_id}")
-def delete_task(task_id: int, authorization: Optional[str] = Header(None)):
-    if not authorization or authorization != "Bearer secret-token":
-        raise HTTPException(status_code=401, detail="Unauthorized - Missing or invalid token")
-        
+def delete_task(task_id: int):
     for i, t in enumerate(tasks_db):
         if t.id == task_id:
             tasks_db.pop(i)
             return {"message": f"Task {task_id} deleted successfully"}
-            
     raise HTTPException(status_code=404, detail="Task not found")
