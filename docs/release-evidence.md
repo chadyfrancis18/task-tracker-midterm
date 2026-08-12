@@ -10,6 +10,7 @@ The GitHub Actions workflow CI (build-and-test) is successfully passing on the f
 The application builds successfully using the Dockerfile.
 - *Command:* docker build -t task-tracker .
 - *Result:* Image built successfully.
+- *Health Response:* curl -i http://127.0.0.1:8000/health returned HTTP 200 with a JSON body.
 
 ## 3. Pytest Execution
 All tests are passing within the CI pipeline.
