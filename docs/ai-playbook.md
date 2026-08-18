@@ -22,6 +22,18 @@
 ## A Decision Card
 * *Scenario:* Deciding whether to use an AI-suggested caching layer.
 * *Context:* The application is a compact midterm/final Task Tracker.
+## AI Usage Rules & Decision Card Scenarios
+
+1. *New Feature:* Use AI for scaffolding and generating boilerplate logic under strict design oversight.
+2. *Code Review:* Critically evaluate AI suggestions for security flaws, dead code, or performance bottlenecks.
+3. *Debugging:* Leverage AI to analyze error traces and propose fixes, followed by manual validation.
+4. *Infrastructure:* Use AI-assisted guidance for containerization and environment configuration files.
+5. *Never-Paste:* Never paste raw AI-generated code or configuration blocks directly into production without line-by-line manual review.
+6. *One Rule:* Always verify package compatibility and ensure imports match the project requirements.
+
+## Basics: Frontend Verification Check
+- *Status:* Verified
+- *Workflow & Execution:* To test and review the frontend and backend workflow, open the user interface locally or via container runtime, ensure proper structure, verify smooth integration with the FastAPI backend, and check static assets.
 * *Decision:* Reject the complex caching layer.
 * *Rationale:* It introduces unnecessary architectural overhead and violates project simplicity scopes
 ## Frontend Verification Check
