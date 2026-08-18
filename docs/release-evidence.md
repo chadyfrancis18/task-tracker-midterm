@@ -1,11 +1,11 @@
-# Release Evidence - Project Task Tracker
+# Release Evidence
 
-## 1. Baseline Section
-- *Branch Name:* main
+## Part A: Baseline
+
+- *Branch Name:* final-project
 - *API Start Command:* uvicorn app.main:app --host 0.0.0.0 --port 8000
-- *API Health Check Response:*
+- *Health Check (/health) Result:*
   ```json
   {
-    "status": "healthy",
-    "timestamp": "2026-08-18T13:20:00Z"
+    "status": "healthy"
   }
