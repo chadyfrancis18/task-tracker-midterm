@@ -15,7 +15,6 @@
 - Test Command Evidence:
 
 pytest tests/
-# Output: All tests passed successfully inside the verification pipeline
 
 ## Part B2: Container Health & Runtime Response
 
