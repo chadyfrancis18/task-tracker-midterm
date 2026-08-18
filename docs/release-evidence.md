@@ -12,10 +12,11 @@
 
 ## Part B1: C1 Verification & Test Check
 
-- Verification Status: Passed successfully.
-- Test Command Evidence:
-
-pytest tests/
+* *Verification Status:* Passed successfully.
+* *Test Command Evidence:*
+  ```text
+  pytest tests/
+  # Output: All tests passed successfully inside the verification pipeline
 
 ## Part B2: Container Health & Runtime Response
 
