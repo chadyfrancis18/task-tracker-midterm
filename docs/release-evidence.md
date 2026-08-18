@@ -13,7 +13,7 @@
 ### Part B1: C1 Verification & Test Check
 
 - *Verification Status:* Passed successfully.
-- *Test Command Evidence:*
+- **Test Command Evidence:**
   ```bash
   pytest tests/
   # Output: All tests passed successfully inside the verification pipeline
