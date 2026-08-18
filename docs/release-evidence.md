@@ -11,12 +11,13 @@
   }
 * *CI Workflow Status:* [Success - Run #58](https://github.com/chadyfrancis18/task-tracker-midterm/actions/runs/32127522792)
 ### Part B1: C1 Verification & Test Check
+
 - *Verification Status:* Passed successfully.
 - *Test Command Evidence:*
   ```bash
   pytest tests/
-  # Output: All tests passed successfully inside the verification pipeline 
-         ### Part B2: Container Health & Runtime Response
+  # Output: All tests passed successfully inside the verification pipeline
+  ### Part B2: Container Health & Runtime Response
 - *Docker Image Build Status:* Successfully built using the multi-layer Dockerfile.
 - *Container Startup & Runtime Response:*
   - *Command:* docker run -p 8000:8000 task-tracker-backend
