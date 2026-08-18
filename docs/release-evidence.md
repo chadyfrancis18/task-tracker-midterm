@@ -10,6 +10,12 @@
     "status": "healthy"
   }
 * *CI Workflow Status:* [Success - Run #58](https://github.com/chadyfrancis18/task-tracker-midterm/actions/runs/32127522792)
+### Part B1: C1 Verification & Test Check
+- *Verification Status:* Passed successfully.
+- *Test Command Evidence:*
+  ```bash
+  pytest tests/
+  # Output: All tests passed successfully inside the verification pipeline
 ## Part B3: Claims vs Reality Check
 
 1. *Claim 1 (API Health Endpoint):* The application exposes a health check endpoint at /health returning a status of healthy.
