@@ -1,18 +1,11 @@
-# Release Evidence
+# Release Evidence - Project Task Tracker
 
-## 1. CI/CD Pipeline Status
-The GitHub Actions workflow CI (build-and-test) is successfully passing on the final-project branch.
-- *Status:* Success
-- *Build Duration:* 26s
-- *Link:* [GitHub Actions Run #49](https://github.com/chadyfrancis18/task-tracker-midterm/actions/runs/31613556031)
-
-## 2. Docker Build Evidence
-The application builds successfully using the Dockerfile.
-- *Command:* docker build -t task-tracker .
-- *Result:* Image built successfully.
-
-## 3. Pytest Execution
-All tests are passing within the CI pipeline.
-- *Total Tests:* 4
-- *Result:* 4 passed in 0.34s
-- *Test cases covered:* Root read, Task creation, Overdue filtering, and Task deletion.
+## 1. Baseline Section
+- *Branch Name:* main
+- *API Start Command:* uvicorn app.main:app --host 0.0.0.0 --port 8000
+- *API Health Check Response:*
+  ```json
+  {
+    "status": "healthy",
+    "timestamp": "2026-08-18T13:20:00Z"
+  }
