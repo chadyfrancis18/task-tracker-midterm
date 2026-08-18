@@ -10,12 +10,18 @@
 * Reason: It streamlined the FastAPI endpoint structure.
 
 ## 2. Security Findings
-* Finding 1: Potential hardcoded string checks in backend logic.
-* Classification: False Positive
-* Reason: No sensitive credentials or secrets are hardcoded in the codebase.
-* Finding 2: Missing rate limiting on public endpoints.
-* Classification: Noise
-* Reason: Out of scope for this specific academic project requirements.
+- *Finding 1:* Potential hardcoded string checks in backend logic.
+  - *File:* backend/main.py
+  - *Classification:* False Positive
+  - *Reason:* No sensitive credentials or secrets are hardcoded in the codebase.
+- *Finding 2:* Missing rate limiting on public endpoints.
+  - *File:* backend/main.py
+  - *Classification:* Noise
+  - *Reason:* Out of scope for this specific academic project requirements.
+- *Finding 3:* Container security posture and root privilege isolation.
+  - *File:* Dockerfile
+  - *Classification:* Verified Secure
+  - *Reason:* Successfully configured and built using a non-root user (appuser) to restrict container privileges
 
 ## 3. Manual Check Performed
 * Self-Check: Verified manually that running pytest and the /health endpoint returns the expected responses successfully.
