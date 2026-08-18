@@ -1,4 +1,4 @@
-Part A: Baseline
+## Part A: Baseline
 
 - Branch Name: final-project
 - API Start Command: uvicorn app.main:app --host 0.0.0.0 --port 8000
@@ -9,7 +9,7 @@ Part A: Baseline
 
 - CI Workflow Status: [Success - Run #58](https://github.com/chadyfrancis18/task-tracker-midterm/actions)
 
-Part B1: C1 Verification & Test Check
+## Part B1: C1 Verification & Test Check
 
 - Verification Status: Passed successfully.
 - Test Command Evidence:
@@ -17,7 +17,7 @@ Part B1: C1 Verification & Test Check
 pytest tests/
 # Output: All tests passed successfully inside the verification pipeline
 
-Part B2: Container Health & Runtime Response
+## Part B2: Container Health & Runtime Response
 
 - Docker Image Build Status: Successfully built using the multi-layer Dockerfile.
 - Container Startup & Runtime Response:
@@ -25,7 +25,7 @@ Part B2: Container Health & Runtime Response
   - Health Check Endpoint Response (/health): json { "status": "healthy" }
 - Security Check: Verified that the application runs under a non-root user (appuser) as configured in the Dockerfile
 
-Part B3: Claims vs Reality Check
+## Part B3: Claims vs Reality Check
 
 1. Claim 1 (API Health Endpoint): The application exposes a health check endpoint at /health returning a status of healthy.
    - Reality: Verified via container runtime response: {"status": "healthy"}.
@@ -34,7 +34,7 @@ Part B3: Claims vs Reality Check
 3. Claim 3 (CI Pipeline Automation): Continuous integration automatically runs tests on every push to the repository using GitHub Actions.
    - Reality: Verified via successful GitHub Actions workflow execution ([CI Run #58](https://github.com/chadyfrancis18/task-tracker-midterm/actions)).
 
-Basics
+## Basics:
 
 Frontend Verification Check
 - Status: Verified
