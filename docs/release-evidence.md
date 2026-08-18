@@ -36,6 +36,10 @@
 
 2. *Claim 2 (Docker Container User):* The Dockerfile configures and runs the application using a non-root user for security.
    * *Reality:* Verified via Dockerfile instruction creating and switching to a non-root user.
+## Basics
 
+### Frontend Verification Check
+- *Status:* Verified
+- *Workflow & Execution:* To test and review the frontend and backend workflow, open the user interface locally or via container runtime, ensure proper structure, verify smooth integration with the FastAPI backend, and check static assets.
 3. *Claim 3 (CI Pipeline Automation):* Continuous integration automatically runs tests on every push to the repository using GitHub Actions.
    * *Reality:* Verified via successful GitHub Actions workflow execution (CI Run #58).
