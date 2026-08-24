@@ -31,12 +31,18 @@
 * Action Taken: Rejected / Corrected because it introduces concurrency bugs; replaced with clean local state handling.
 
 ## 5. AI Usage Rules & Decision Card Scenarios
-1. New Feature: Use AI for scaffolding and generating boilerplate logic under strict design oversight.
-2. Code Review: Critically evaluate AI suggestions for security flaws, dead code, or performance bottlenecks.
-3. Debugging: Leverage AI to analyze error traces and propose fixes, followed by manual validation.
-4. Infrastructure: Use AI-assisted guidance for containerization and environment configuration files.
-5. Never-Paste: Never paste raw AI-generated code or configuration blocks directly into production without line-by-line manual review.
-6. One Rule: Always verify package compatibility and ensure imports match the project requirements.
+### AI Usage Rules
+1. *Transparency Rule:* Always document and acknowledge the scope of AI assistance utilized during code generation and debugging phases.
+2. *Verification Rule:* Never accept raw AI-generated code or configuration blocks without rigorous line-by-line manual review and local execution testing.
+3. *Compatibility Rule:* Validate package versions, dependencies, and environment configurations to ensure seamless integration with project requirements.
+
+### Decision Card Scenarios
+1. *New Feature:* Use AI for scaffolding and generating boilerplate logic under strict design oversight.
+2. *Code Review:* Critically evaluate AI suggestions for security flaws, dead code, or performance bottlenecks.
+3. *Debugging:* Leverage AI to analyze error traces and propose fixes, followed by manual validation.
+4. *Infrastructure:* Use AI-assisted guidance for containerization and environment configuration files.
+5. *Never-Paste:* Never paste raw AI-generated code or configuration blocks directly into production without line-by-line manual review.
+6. *One Rule:* Always verify package compatibility and ensure imports match the project requirements.
 
 ## 6. Ownership Statement
 I, Chady Francis, designed, implemented, and thoroughly tested the Task Tracker application code structure within this repository. I have personally validated all automated tests, container configurations, and execution workflows. Every line of code and documentation included in this final submission has been meticulously reviewed and understood by me
