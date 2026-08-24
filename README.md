@@ -1,16 +1,17 @@
-# Task Tracker Midterm Project
+# AI-Assisted Coding Final Project
 
-A full-stack task management application built with FastAPI, HTML/JS frontend, and tested using Pytest, featuring custom due date tracking and tag categorization.
+## Project Overview
+This repository contains the final project for the AI-Assisted Coding course. The application is a Task Tracker system developed and maintained using AI-assisted workflows, automated testing, and structured documentation.
 
-## Project Structure
-- backend/: Contains the FastAPI application (main.py) with CRUD endpoints and advanced filter logic.
-- frontend/: Contains the user interface (index.html) to interact with tasks and filters.
-- tests/: Contains automated test cases (test_main.py).
-- docs/: Contains project documentation deliverables (User Stories, Mini-ADR, Prompt Log, Verification, and Reflection).
+---
 
-## How to Run
-Install dependencies:
-   ```bash
-   pip install -r requirements.txt
-uvicorn backend.main:app --reload
-pytest
+## Final Project Section
+* *Repository Branch:* final-project
+* *Evidence Files List:*
+  * docs/release-evidence.md
+  * docs/final-ai-review.md
+  * docs/ai-playbook.md
+* *Docker Run Command:*
+  ```bash
+  docker build -t task-tracker-backend .
+  docker run -d -p 8000:8000 task-tracker-backend
