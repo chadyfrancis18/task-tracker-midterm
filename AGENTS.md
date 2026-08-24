@@ -1,3 +1,5 @@
+# AGENTS.md
+
 ## 1. The Stack
 * Language: Python 3.10+
 * Framework: FastAPI
@@ -5,10 +7,10 @@
 * Containerization: Docker (Non-root user)
 
 ## 2. Run and Test Commands
-* Install: pip install -r backend/requirements.txt
+* Install: pip install -r requirements.txt (or from backend if structured so)
 * Run Server: uvicorn backend.main:app --reload --host 0.0.0.0 --port 8000
-* Run Tests: pytest backend/tests/ -v
-* Docker Build: docker build -t task-tracker-backend ./backend
+* Run Tests: pytest tests/ -v
+* Docker Build: docker build -t task-tracker-backend .
 
 ## 3. Project Rules
 * No hardcoded secrets; use .env.
@@ -26,12 +28,12 @@
 ## 6. Decision Card
 | Decision / Scenario | Action Taken / Rule Applied |
 | :--- | :--- |
-| *1. Framework Selection* | Selected FastAPI for modern asynchronous support and clean routing. |
-| *2. Testing Framework* | Utilized pytest for automated and reliable endpoint testing. |
-| *3. Containerization* | Implemented non-root security practices in Docker. |
-| *4. AI Assistance* | Used AI strictly for scaffolding and test optimization under human oversight. |
-| *5. Documentation Guardrail* | Ensured all code modifications are reflected in evidence docs. |
-| *6. Security Compliance* | Rejected hardcoded secrets and enforced environment variables. |
+| 1. Framework Selection | Selected FastAPI for modern asynchronous support and clean routing. |
+| 2. Testing Framework | Utilized pytest for automated and reliable endpoint testing. |
+| 3. Containerization | Implemented non-root security practices in Docker. |
+| 4. AI Assistance | Used AI strictly for scaffolding and test optimization under human oversight. |
+| 5. Documentation Guardrail | Ensured all code modifications are reflected in evidence docs. |
+| 6. Security Compliance | Rejected hardcoded secrets and enforced environment variables. |
 
 ## 7. Developer Ownership Statement
-I, Chady Elias Francis, take full and absolute ownership of every line of code, configuration file, and documentation artifact within this repository, and have personally verified all execution commands
+I, Chady Elias Francis, take full and absolute ownership of every line of code, configuration file, and documentation artifact within this repository, and have personally verified all execution commands.
