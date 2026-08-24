@@ -12,7 +12,7 @@
   }
 
 
- *CI Workflow Status: Success - Run #58
+ * CI Workflow Status: Success - Run #58
 
 ## Part B1: C1 Verification & Test Check
 $ pytest backend/tests/ -v
