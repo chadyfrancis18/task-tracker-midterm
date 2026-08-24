@@ -1,5 +1,3 @@
-# AGENTS.md
-
 ## 1. The Stack
 * Language: Python 3.10+
 * Framework: FastAPI
