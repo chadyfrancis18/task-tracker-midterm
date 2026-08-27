@@ -36,7 +36,7 @@ This document provides the test execution evidence for the Task Tracker API proj
 
 The test suite consists of the following automated test cases, verifying the health endpoint, task creation with tags/due dates, filtering, patching/updating, and deletion:
 
-1. **test_read_health**
+1. **test_read_root**
    * Status: PASSED
    * Description: Verifies that the `/health` endpoint returns the correct status message and HTTP 200 status.
 
