@@ -24,25 +24,14 @@ class Task(BaseModel):
     tags: List[str] = Field(default_factory=list)
 
 
-# Schema for partial task updates (PATCH)
-class TaskUpdate(BaseModel):
-    title: Optional[str] = None
-    description: Optional[str] = None
-    completed: Optional[bool] = None
-    due_date: Optional[date] = None
-    tags: Optional[List[str]] = None
-
-
 tasks_db: List[Task] = []
 
 
-# Root endpoint
 @app.get("/")
 def read_root():
     return {"message": "Welcome to Task Tracker API with Advanced Features"}
 
 
-# Get tasks endpoint
 @app.get("/tasks", response_model=List[Task])
 def get_tasks(
     overdue: Optional[bool] = None, tag: Optional[str] = None
@@ -70,7 +59,6 @@ def get_tasks(
     return result
 
 
-# Create task endpoint (POST)
 @app.post("/tasks", response_model=Task)
 def create_task(task: Task):
     for t in tasks_db:
@@ -82,31 +70,6 @@ def create_task(task: Task):
     return task
 
 
-# Full update task endpoint (PUT)
-@app.put("/tasks/{task_id}", response_model=Task)
-def update_task(task_id: int, updated_task: Task):
-    for idx, t in enumerate(tasks_db):
-        if t.id == task_id:
-            tasks_db[idx] = updated_task
-            return updated_task
-    raise HTTPException(status_code=404, detail="Task not found")
-
-
-# Partial update task endpoint (PATCH)
-@app.patch("/tasks/{task_id}", response_model=Task)
-def patch_task(task_id: int, task_update: TaskUpdate):
-    for idx, t in enumerate(tasks_db):
-        if t.id == task_id:
-            stored_task_data = t.dict()
-            update_data = task_update.dict(exclude_unset=True)
-            updated_fields = {**stored_task_data, **update_data}
-            updated_task = Task(**updated_fields)
-            tasks_db[idx] = updated_task
-            return updated_task
-    raise HTTPException(status_code=404, detail="Task not found")
-
-
-# Delete task endpoint (DELETE)
 @app.delete("/tasks/{task_id}")
 def delete_task(task_id: int):
     for idx, t in enumerate(tasks_db):
