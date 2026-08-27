@@ -1,11 +1,11 @@
 from typing import List, Optional
 from fastapi import FastAPI, HTTPException
 from pydantic import BaseModel
+from datetime import date
 
 app = FastAPI(
     title="Task Tracker API with Advanced Features", version="2.0.0"
 )
-
 
 class Task(BaseModel):
     id: int
@@ -13,12 +13,10 @@ class Task(BaseModel):
     description: Optional[str] = None
     completed: bool = False
 
-
 class TaskUpdate(BaseModel):
     title: Optional[str] = None
     description: Optional[str] = None
     completed: Optional[bool] = None
-
 
 tasks_db: List[Task] = [
     Task(
@@ -29,21 +27,17 @@ tasks_db: List[Task] = [
     )
 ]
 
-
 @app.get("/health")
 def health_check():
-    return {"status": "healthy", "service": "task-tracker-backend"}
-
+    return {"status": "healthy"}
 
 @app.get("/")
 def read_root():
     return {"message": "Welcome to Task Tracker API with Advanced Features"}
 
-
 @app.get("/tasks", response_model=List[Task])
 def get_tasks():
     return tasks_db
-
 
 @app.post("/tasks", response_model=Task)
 def create_task(task: Task):
@@ -54,7 +48,6 @@ def create_task(task: Task):
             )
     tasks_db.append(task)
     return task
-
 
 @app.patch("/tasks/{task_id}", response_model=Task)
 def patch_task(task_id: int, task_update: TaskUpdate):
@@ -67,7 +60,6 @@ def patch_task(task_id: int, task_update: TaskUpdate):
             tasks_db[idx] = updated_task
             return updated_task
     raise HTTPException(status_code=404, detail="Task not found")
-
 
 @app.delete("/tasks/{task_id}")
 def delete_task(task_id: int):
