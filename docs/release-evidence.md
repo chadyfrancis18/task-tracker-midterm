@@ -38,7 +38,7 @@ The test suite consists of the following automated test cases, verifying the hea
 
 1. **test_read_root**
    * Status: PASSED
-   * Description: Verifies that the `/health` endpoint returns the correct status message and HTTP 200 status.
+   * Description: Verifies that the root endpoint (GET /) returns the welcome message {"message": "Welcome to Task Tracker API with Advanced Features"} and HTTP 220 status
 
 2. **test_create_task_with_tags_and_due_date**
    * Status: PASSED
