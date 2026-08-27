@@ -1,17 +1,13 @@
 from fastapi.testclient import TestClient
-from backend.main import app
 from datetime import date, timedelta
+from backend.main import app
 
 client = TestClient(app)
 
-
-def test_read_root():
-    response = client.get("/")
+def test_read_health():
+    response = client.get("/health")
     assert response.status_code == 200
-    assert response.json() == {
-        "message": "Welcome to Task Tracker API with Advanced Features"
-    }
-
+    assert response.json() == {"status": "healthy"}
 
 def test_create_task_with_tags_and_due_date():
     task_data = {
@@ -26,12 +22,10 @@ def test_create_task_with_tags_and_due_date():
     assert response.status_code == 200
     assert response.json()["title"] == "Complete Midterm"
 
-
 def test_filter_overdue_tasks():
     response = client.get("/tasks?overdue=true")
     assert response.status_code == 200
     assert isinstance(response.json(), list)
-
 
 def test_patch_task():
     response = client.patch(
@@ -40,7 +34,6 @@ def test_patch_task():
     assert response.status_code == 200
     assert response.json()["title"] == "Updated Task Title"
     assert response.json()["completed"] is True
-
 
 def test_delete_task():
     response = client.delete("/tasks/10")
