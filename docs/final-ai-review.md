@@ -53,3 +53,6 @@
 
 ## 6. Ownership Statement
 I, Chady Francis, designed, implemented, and thoroughly tested the Task Tracker application code structure within this repository. I have personally validated all automated tests, container configurations, and execution workflows. Every line of code and documentation included in this final submission has been meticulously reviewed and understood by me.
+
+## 7. AGENTS.md Guardrails Confirmation
+- *Confirmation Statement:* I hereby confirm that all AI-assisted coding activities, code generations, and debugging steps adhered strictly to the guardrails, security rules, and development boundaries outlined in AGENTS.md. No unauthorized shortcuts or unreviewed snippets were introduced into the production codebase.
