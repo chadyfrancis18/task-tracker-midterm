@@ -34,11 +34,11 @@ This document provides the test execution evidence for the Task Tracker API proj
 
 ## Test Suite Results
 
-The test suite consists of the following automated test cases, verifying the root welcome message, task creation with tags/due dates, filtering, patching/updating, and deletion:
+The test suite consists of the following automated test cases, verifying the health check, task creation with tags/due dates, filtering, patching/updating, and deletion:
 
-1. test_read_root
+1. test_read_health
    * Status: PASSED
-   * Description: Verifies that the root endpoint (GET /) returns the welcome message {"message": "Welcome to Task Tracker API with Advanced Features"} and HTTP 200 status.
+   * Description: Verifies the /health endpoint properly, ensuring a GET request to /health returns the correct JSON status and HTTP 200 status.
      
 2. **test_create_task_with_tags_and_due_date**
    * Status: PASSED
