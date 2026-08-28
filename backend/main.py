@@ -53,8 +53,8 @@ def create_task(task: Task):
 def patch_task(task_id: int, task_update: TaskUpdate):
     for idx, t in enumerate(tasks_db):
         if t.id == task_id:
-            stored_task_data = t.dict()
-            update_data = task_update.dict(exclude_unset=True)
+            stored_task_data = t.model_dump()
+            update_data = task_update.model_dump(exclude_unset=True)
             updated_fields = {**stored_task_data, **update_data}
             updated_task = Task(**updated_fields)
             tasks_db[idx] = updated_task
